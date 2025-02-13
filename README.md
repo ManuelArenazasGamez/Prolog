@@ -1,2 +1,2 @@
-# Sistemas-Programables
-Sistemas Programables
+# Programación Logica Y Funcional
+Programación Logica Y Funcional
