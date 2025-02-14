@@ -1,0 +1,89 @@
+
+Table of Contents
+─────────────────
+1 Problemas con car y cdr
+═════════════════════════
+
+° Lista: (a b c d e) → Extraer d
+Break 2 [4]> (cadddr ' (a b c d e))
+D
+
+°Lista: ((1 2) (3 4) (5 6)) → Extraer 5
+Break 2 [4]> (caaddr '((1 2) (3 4) (5 6)))
+5
+
+°Lista: ((a b) (c d) (e f)) → Extraer e
+Break 2 [4]> (caaddr '((a b) (c d) (e f)))
+E
+
+°Lista: ((x y) ((p q) (r s)) (z w)) → Extraer z
+Break 2 [4]> (caaddr '((x y) ((p q) (r s)) (z w)))
+Z
+
+°Lista: ((1 (2 3)) (4 (5 6))) → Extraer 6
+Break 33 [35]> (cdr(cadadr '((1 (2 3)) (4 (5 6)))))
+(6)
+
+°Lista: (((a b) c) d e) → Extraer c
+Break 36 [38]> (cadr(car '(((a b) c) d e)))
+C
+
+°Lista: (((1 2) 3) ((4 5) 6)) → Extraer 6
+Break 38 [40]> (cadadr '(((1 2) 3) ((4 5) 6)))
+6
+
+°Lista: ((p (q (r s))) t u) → Extraer (r s)
+Break 40 [42]> (cadr(cadar '((p (q (r s))) t u)))
+(R S)
+
+°Lista: (((a) b) (c (d e)) f) → Extraer d
+Break 42 [44]> (car(cadadr '(((a) b) (c (d e)) f)))
+D
+
+°Lista: ((1 (2 (3 4))) (5 6)) → Extraer 3
+Break 43 [45]> (caadar(cdar '((1 (2 (3 4))) (5 6))))
+3
+
+°Lista: (((x) (y)) ((z) (w))) → Extraer (w)
+Break 44 [46]> (car(cadadr '(((x) (y)) ((z) (w)))))
+W
+
+°Lista: ((a (b (c d))) (e f)) → Extraer c
+Break 45 [47]> (caar(cdadar '((a (b (c d))) (e f))))
+C
+
+°Lista: ((1 (2 (3 (4 5)))) (6 7)) → Extraer 4
+Break 48 [50]> (caadar(cdadar '((1 (2 (3 (4 5)))) (6 7))))
+4
+
+
+°Lista: (((a b) c) ((d e) f) ((g h) i)) → Extraer g
+Break 49 [51]> (car(caaddr '(((a b) c) ((d e) f) ((g h) i))))
+G
+
+°Lista: (((x y) (z w)) ((p q) (r s))) → Extraer r
+Break 49 [51]> (caadar(cdr '(((x y) (z w)) ((p q) (r s)))))
+R
+
+
+°Lista: ((1 (2 (3 (4 (5 6))))) (7 8)) → Extraer 5
+Break 49 [51]> (caadar(cdadr(cadar '((1 (2 (3 (4 (5 6))))) (7 8)))))
+5
+
+
+°Lista: ((a (b (c (d e)))) (f g)) → Extraer d
+Break 50 [52]> (caar(cdadar(cdar '((a (b (c (d e)))) (f g)))))
+D
+
+°Lista: (((1 2) (3 4)) ((5 6) (7 8))) → Extraer 7
+Break 59 [61]> (car(cadadr '(((1 2) (3 4)) ((5 6) (7 8)))))
+7
+
+°Lista: ((x (y (z (w v))))) → Extraer w
+Break 64 [66]> (caadar(cdadar '((x (y (z (w v)))))))
+W
+
+
+°Lista: (((a b c) (d e f)) ((g h i) (j k l))) → Extraer j
+Break 66 [68]> (car (cadadr '(((a b c) (d e f)) ((g h i) (j k l))) ) )
+J
