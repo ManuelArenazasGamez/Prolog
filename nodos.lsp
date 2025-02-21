@@ -1,0 +1,7 @@
+(defparameter *nodod* '((preal
+                        (alto)
+)
+
+
+
+))
