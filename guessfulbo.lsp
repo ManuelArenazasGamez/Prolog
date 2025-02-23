@@ -43,6 +43,6 @@
                                 (format t "No se encontró un jugador con esas características.~%"))))))
                     (format t "Posición no encontrada.~%"))))
           (format t "Nacionalidad no encontrada.~%")))))
-)
 
 (adivinar-futbolista)
+)
