@@ -1,4 +1,3 @@
-;; Base de datos de futbolistas organizada por nacionalidad y posición
 (defparameter *futbolistas*
   '((argentina
      (delantero ((messi (champions t) (mundial t)) (batistuta (champions nil) (mundial nil))))
