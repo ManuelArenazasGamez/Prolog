@@ -9,7 +9,7 @@
 
 ## 2. Variables individuales  
 (representan elementos genéricos dentro del dominio)  
-- `X, Y` (vistos en el pizarrón como variables en relaciones)  
+- `X, Y`  
 
 ## 3. Cuantificadores  
 (determinan alcance de la afirmación)  
