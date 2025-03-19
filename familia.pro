@@ -6,7 +6,7 @@ persona(pedro).
 persona(ana).  
 persona(luisa).  
 
-padre(luis, juan).  z
+padre(luis, juan).  
 padre(luis, jose).  
 
 madre(rosa, juan).  

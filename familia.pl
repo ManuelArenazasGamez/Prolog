@@ -60,11 +60,9 @@ madrede(paula, pedro).
 
 #Abuelo
 abuelo(X, Y) :- padre(X, W), padre(W, Y).
-prov(x):-hombre(X), padre(X); madre(X), mujer(X).
 
 #Abuela
 abuela(X, Y) :- madrede(X, W), madrede(W, Y).
-prov(x):-hombre(X), padre(X); madre(X), mujer(X).
 
 # Nieto
 nieto(X, Y) :- abuelo(Y, X); abuela(Y, X), hombre(X).
@@ -100,8 +98,3 @@ sobrino(X, Y) :- tia(Y, X), hombre(X).
 sobrina(X, Y) :- tio(Y, X), mujer(X).
 sobrina(X, Y) :- tia(Y, X), mujer(X).
 
-# Padrino
-padrino(X, Y) :- padrede(X, Z), padre(Z, Y); padrede(X, Z), madre(Z, Y).
-
-# Madrina
-madrina(X, Y) :- madrede(X, Z), padre(Z, Y); madrede(X, Z), madre(Z, Y).
