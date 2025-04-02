@@ -43,8 +43,8 @@ asignar_templos :-
 
     /*Problemas 2: Las armas de los héroes Cuatro héroes mitológicos
 Las armas de los héroes Cuatro héroes mitológicos (Aquiles, Perseo, Hércules y Teseo) 
-poseen armas únicas (espada, lanza, arco y escudo). Sabemos que: Aquiles no usa el escudo
- ni el arco. Perseo no usa la espada. 
+poseen armas únicas (espada, lanza, arco y escudo). Sabemos que: 
+Aquiles no usa el escudo ni el arco. Perseo no usa la espada. 
  Hércules no usa la lanza ni el escudo. 
  Teseo usa el arco o el escudo.
   Pregunta: ¿Qué arma pertenece a cada héroe?*/
@@ -53,7 +53,6 @@ poseen armas únicas (espada, lanza, arco y escudo). Sabemos que: Aquiles no usa
 
 % Héroes
 heroe(aquiles).
-heroe(perseo).
 heroe(hercules).
 heroe(teseo).
 % Armas
@@ -63,4 +62,3 @@ arma(arco).
 arma(escudo).
 % Reglas para asignar armas a héroes
 usa(aquiles, Arma) :- arma(Arma), Arma \= escudo, Arma \= arco.
-usa(perseo, Arma):- arma(Arma), Arma \= espada.
