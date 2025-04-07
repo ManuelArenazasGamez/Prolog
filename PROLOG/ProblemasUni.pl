@@ -62,3 +62,55 @@ arma(arco).
 arma(escudo).
 % Reglas para asignar armas a héroes
 usa(aquiles, Arma) :- arma(Arma), Arma \= escudo, Arma \= arco.
+usa(hercules, Arma) :- arma(Arma), Arma \= lanza, Arma \= escudo.
+usa(teseo, Arma) :- arma(Arma), (Arma = arco ; Arma = escudo).
+
+asignar_armas :-
+    usa(aquiles, A1),
+    usa(hercules, A2),
+    usa(teseo, A3),
+    usa(perseo, A4),
+    A1 \= A2, A1 \= A3, A1 \= A4,
+    A2 \= A3, A2 \= A4,
+    A3 \= A4,
+    write('Aquiles usa la '), write(A1), nl,
+    write('Hércules usa la '), write(A2), nl,
+    write('Teseo usa la '), write(A3), nl,
+    write('Perseo usa la '), write(A4), nl.
+
+/*Problema 3: Las gemas de los titanes Cuatro titanes
+(Cronos, Océano, Hiperión y Japeto) tienen cada uno una gema (zafiro, rubí, esmeralda y diamante).
+ Sabemos que: Cronos no tiene el zafiro ni el diamante. 
+ Océano no tiene el rubí. 
+ Hiperión no tiene el zafiro ni el rubí. 
+ Japeto tiene el diamante o la esmeralda.
+ Pregunta: ¿Qué gema tiene cada titán?*/
+
+% Titanes
+titan(cronos).
+titan(oceano).
+titan(hiperion).
+titan(japeto).
+% Gemas
+gema(zafiro).
+gema(rubi).
+gema(esmeralda).
+gema(diamante).
+% Reglas para asignar gemas a titanes
+tiene(cronos, Gema) :- gema(Gema), Gema \= zafiro, Gema \= diamante.
+tiene(oceano, Gema) :- gema(Gema), Gema \= rubi.
+tiene(hiperion, Gema) :- gema(Gema), Gema \= zafiro, Gema \= rubi.
+tiene(japeto, Gema) :- gema(Gema), (Gema = diamante ; Gema = esmeralda).
+
+asignar_gemas :-
+    tiene(cronos, G1),
+    tiene(oceano, G2),
+    tiene(hiperion, G3),
+    tiene(japeto, G4),
+    G1 \= G2, G1 \= G3, G1 \= G4,
+    G2 \= G3, G2 \= G4,
+    G3 \= G4,
+    write('Cronos tiene el '), write(G1), nl,
+    write('Océano tiene el '), write(G2), nl,
+    write('Hiperión tiene el '), write(G3), nl,
+    write('Japeto tiene el '), write(G4), nl.
