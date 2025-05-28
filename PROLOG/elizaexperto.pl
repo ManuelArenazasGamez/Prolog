@@ -276,13 +276,17 @@ obtener_sintomas_actualizados(Sintomas) :-
 validar_sintomas([]).
 validar_sintomas([H|T]) :- sintoma(H), validar_sintomas(T).
 
-listar_diagnosticos([D|Ds]) :-
+% Versión corregida de listar_diagnosticos que evita duplicados
+listar_diagnosticos(Diagnosticos) :-
+    sort(Diagnosticos, DiagnosticosUnicos),  % Elimina duplicados
+    listar_diagnosticos_unicos(DiagnosticosUnicos).
+
+listar_diagnosticos_unicos([D|Ds]) :-
     write('- '), write(D), nl,
     (D = cancer_de_ovario -> explicar_cancer_ovario ;
      D = hepatitis -> explicar_hepatitis),
-    listar_diagnosticos(Ds).
-listar_diagnosticos([]).
-
+    listar_diagnosticos_unicos(Ds).
+listar_diagnosticos_unicos([]).
 explicar_fallo_diagnostico(hombre, Sintomas, _) :-
     (member(dolor_pelvico, Sintomas); member(distension_abdominal, Sintomas)) ->
     write('Nota: Los sintomas ginecologicos no aplican a pacientes masculinos.'), nl;
@@ -438,7 +442,7 @@ procesar_opcion_familia(_) :-
 % -------------------------------
 % MENU PRINCIPAL
 % -------------------------------
-inicio :-
+eliza :-
     nl, write('=== SISTEMA EXPERTO ==='), nl,
     write('1. Diagnostico medico'), nl,
     write('2. Consultar familia'), nl,
@@ -446,9 +450,9 @@ inicio :-
     write('Seleccione opcion: '), read(Opcion),
     ejecutar(Opcion).
 
-ejecutar(1) :- diagnostico_interactivo, inicio.
-ejecutar(2) :- consultar_familia, inicio.
+ejecutar(1) :- diagnostico_interactivo, eliza.
+ejecutar(2) :- consultar_familia, eliza.
 ejecutar(3) :- write('Adios!'), nl.
-ejecutar(_) :- write('Opcion invalida!'), nl, inicio.
+ejecutar(_) :- write('Opcion invalida!'), nl, eliza.
 
-:- inicio.
+:- eliza.
