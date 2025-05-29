@@ -27,9 +27,7 @@ procesar_consulta(Input) :-
     writeln('Entiendo que no te sientes bien. Vamos a hacer un diagnostico.'),
     iniciar_diagnostico, !.
 
-% -------------------------------
-% CONSULTAS FAMILIARES
-% -------------------------------
+
 procesar_consulta(Input) :-
     (Input == ['quiero', 'consultar', 'familia'] ; 
      Input == ['consulta', 'familiar'] ;
