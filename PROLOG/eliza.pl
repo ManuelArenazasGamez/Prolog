@@ -32,11 +32,11 @@ template([buendia, mi, nombre, es, s(_), '.'], ['buen dia', 'Como', estas, tu, 0
 template([hola, ',', mi, nombre, es, s(_), '.'], ['Hola', 0, 'Como', estas, tu, '?'], [5]).
 template([buendia, ',', mi, nombre, es, s(_), '.'], ['Buendia', 'Como', estas, tu, 0, '?'], [5]).
 
-template([hola, como, estas], ['Hola', 'Estoy', bien, ',', 'gracias', 'por', 'preguntar', '.'], []).
-template([buenas, tardes], ['Buenas', 'tardes', ',', '¿cómo', 'puedo', 'ayudarte', '?'], []).
-template([buenas, noches], ['Buenas', 'noches', ',', '¿en', 'qué', 'puedo', 'ayudarte', '?'], []).
-template([hola, que, tal], ['Hola', ',', 'todo', 'bien', ',', '¿y', 'tu', '?'], []).
-template([hola, eliza], ['Hola', ',', '¿como', 'puedo', 'ayudarte', '?'], []).
+template([hola, como, estas, '.'], ['Hola', 'Estoy', bien, ',', 'gracias', 'por', 'preguntar', '.'], []).
+template([buenas, tardes, '.'], ['Buenas', 'tardes', ',', '¿cómo', 'puedo', 'ayudarte', '?'], []).
+template([buenas, noches, '.'], ['Buenas', 'noches', ',', '¿en', 'qué', 'puedo', 'ayudarte', '?'], []).
+template([hola, que, tal, '.'], ['Hola', ',', 'todo', 'bien', ',', '¿y', 'tu', '?'], []).
+template([hola, eliza, '.'], ['Hola', ',', '¿como', 'puedo', 'ayudarte', '?'], []).
 
 %COMODINES
 template([hola, _], ['Hola', 'como', estas, tu, '?'], []).
