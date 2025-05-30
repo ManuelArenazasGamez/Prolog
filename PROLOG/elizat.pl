@@ -12,7 +12,9 @@ procesar_consulta(Input) :-
                   ['hasta', 'pronto'], ['me', 'voy'], ['cuidate'], ['bye'], ['hasta', 'manana']]),
     writeln('Adios. Espero haberte ayudado. Espero verte pronto.'), !.
 
-
+% -------------------------------
+% CONSULTAS MEDICAS
+% -------------------------------
 procesar_consulta(Input) :-
     (Input == ['quiero', 'un', 'diagnostico'] ; 
      Input == ['necesito', 'un', 'diagnostico'] ;
@@ -27,7 +29,9 @@ procesar_consulta(Input) :-
     writeln('Entiendo que no te sientes bien. Vamos a hacer un diagnostico.'),
     iniciar_diagnostico, !.
 
-
+% -------------------------------
+% CONSULTAS FAMILIARES
+% -------------------------------
 procesar_consulta(Input) :-
     (Input == ['quiero', 'consultar', 'familia'] ; 
      Input == ['consulta', 'familiar'] ;
@@ -38,7 +42,9 @@ procesar_consulta(Input) :-
     readln(ConsultaFam),
     procesar_consulta_familiar(ConsultaFam), !.
 
-
+% -------------------------------
+% PLANTILLAS DE CONVERSACION
+% -------------------------------
 procesar_consulta(Input) :-
     template(Stim, Resp, IndStim),
     match(Stim, Input),
@@ -54,9 +60,11 @@ template([como, estas], ['Estoy', 'bien,', 'gracias', 'por', 'preguntar.', '¿Y'
 template([que, puedes, hacer], ['Puedo', 'ayudarte', 'con:', 'diagnosticos', 'medicos', '(cancer', 'de', 'ovario', 'y', 'hepatitis)', 'y', 'consultas', 'sobre', 'relaciones', 'familiares.'], []).
 
 % Plantilla por defecto
-template(_, ['No', 'entendi', 'completamente.', '¿Podrias', 'reformular', 'tu', 'pregunta', 'o', 'decir', '"quiero', 'un', 'diagnostico"', 'o', '"consulta', 'familiar"?'], []).
+template(_, ['Que', 'quieres', 'hacer.', 'Podrias', 'decir', '"quiero', 'un', 'diagnostico"', 'o', '"consulta', 'familiar"'], []).
 
-
+% -------------------------------
+% FUNCIONES AUXILIARES DE ELIZA
+% -------------------------------
 match([],[]).
 match([], _):- true.
 match([S|Stim],[I|Input]) :-
@@ -94,7 +102,9 @@ replace0([I|Index], Input, N, Resp, R):-
     N1 is N + 1,
     replace0(Index, Input, N1, R1, R),!.
 
-
+% -------------------------------
+% INICIO DEL DIAGNOSTICO MEDICO
+% -------------------------------
 iniciar_diagnostico :-
     nl, write('=== DIAGNOSTICO MEDICO ==='), nl,
     write('Enfocado en cancer de ovario y hepatitis'), nl, nl,
@@ -156,7 +166,9 @@ obtener_sintomas_actualizados(Sintomas) :-
 validar_sintomas([]).
 validar_sintomas([H|T]) :- sintoma(H), validar_sintomas(T).
 
-
+% -------------------------------
+% PROCESAMIENTO DE CONSULTAS FAMILIARES 
+% -------------------------------
 procesar_consulta_familiar(Input) :-
     (Input = [X, es, padre, de, Y] -> 
         (padre(X, Y) -> writeln(['Si,', X, 'es padre de', Y]) ; writeln(['No,', X, 'no es padre de', Y]))
@@ -204,6 +216,9 @@ procesar_respuesta_familiar(Respuesta) :-
 
 
 
+% -------------------------------
+% BASE DE CONOCIMIENTO FAMILIAR
+% -------------------------------
 hombre(jose).
 hombre(manuel).
 hombre(gerardo).
@@ -246,7 +261,9 @@ tia(X, Y) :- hermana(X, Z), (padre(Z, Y); madre(Z, Y)).
 primo(X, Y) :- (padre(Z, X); madre(Z, X)), (hermano(Z, W); hermana(Z, W)), (padre(W, Y); madre(W, Y)), hombre(X), X \= Y.
 prima(X, Y) :- (padre(Z, X); madre(Z, X)), (hermano(Z, W); hermana(Z, W)), (padre(W, Y); madre(W, Y)), mujer(X), X \= Y.
 
-
+% -------------------------------
+% BASE DE CONOCIMIENTO MEDICA
+% -------------------------------
 region(mexico).
 region(colombia).
 region(argentina).
@@ -343,7 +360,9 @@ presente_en(hepatitis, amazonas).
 presente_en(hepatitis, salta).
 presente_en(hepatitis, baja_california).
 
-
+% -------------------------------
+% REGLAS DE DIAGNOSTICO 
+% -------------------------------
 sintoma_clave(cancer_de_ovario, dolor_pelvico).
 sintoma_clave(cancer_de_ovario, distension_abdominal).
 sintoma_clave(hepatitis, ictericia).
@@ -376,7 +395,9 @@ umbral_minimo(hepatitis, N, alta) :- N >= 3.
 enfermedad_valida_para_genero(cancer_de_ovario, mujer).
 enfermedad_valida_para_genero(hepatitis, _).
 
-
+% -------------------------------
+% FUNCIONES AUXILIARES MEDICAS
+% -------------------------------
 tiene_sintoma_alarma(Sintomas, cancer_de_ovario) :-
     member(sangrado_postmenopausia, Sintomas).
 tiene_sintoma_alarma(Sintomas, hepatitis) :-
