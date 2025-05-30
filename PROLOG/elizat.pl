@@ -59,6 +59,45 @@ template([hola, _], ['Hola', '¿como', 'estas', '?', '¿','en', 'que', 'puedo', 
 template([como, estas], ['Estoy', 'bien,', 'gracias', 'por', 'preguntar.', '¿Y', 'tu', '?'], []).
 template([que, puedes, hacer], ['Puedo', 'ayudarte', 'con:', 'diagnosticos', 'medicos', '(cancer', 'de', 'ovario', 'y', 'hepatitis)', 'y', 'consultas', 'sobre', 'relaciones', 'familiares.'], []).
 
+
+% -------------------------------
+% PLANTILLAS DE CONVERSACION - MEDICAMENTOS
+% -------------------------------
+
+% Hepatitis - Variantes de pregunta
+template([que, medicamentos, para, hepatitis], ['Para', 'hepatitis', 'los', 'medicamentos', 'pueden', 'incluir:', 'Interferon,', 'Ribavirina,', 'Entecavir,', 'Tenofovir,', 'y', 'en', 'casos', 'avanzados,', 'trasplante', 'hepatico.'], []).
+template([medicamentos, contra, hepatitis], ['El', 'tratamiento', 'para', 'hepatitis', 'depende', 'del', 'tipo:', 'Para', 'hepatitis', 'B:', 'Entecavir/Tenofovir;', 'Para', 'hepatitis', 'C:', 'sofosbuvir+velpatasvir', 'u', 'otros', 'antivirales', 'de', 'accion', 'directa.'], []).
+template([tratamiento, hepatitis], ['Tratamientos', 'para', 'hepatitis:', nl, 
+                                    '- Hepatitis aguda: reposo, hidratacion, evitar alcohol', nl,
+                                    '- Hepatitis B cronica: Tenofovir, Entecavir', nl,
+                                    '- Hepatitis C: Sofosbuvir/Ledipasvir', nl,
+                                    'Siempre', 'consulta', 'a', 'tu', 'medico.'], []).
+template([como, tratar, hepatitis], ['El', 'tratamiento', 'de', 'hepatitis', 'incluye:', nl,
+                                     '1. Antivirales', nl,
+                                     '2. Control de sintomas', nl,
+                                     '3. Dieta baja en grasas', nl,
+                                     '4. Evitar alcohol', nl,
+                                     '5. En casos graves, trasplante.'], []).
+
+% Cancer de ovario - Variantes de pregunta
+template([medicamentos, cancer, ovario], ['Para', 'cancer', 'de', 'ovario', 'se', 'usan:', 'Paclitaxel,', 'Carboplatino,', 'Bevacizumab,', 'Olaparib', '(para', 'casos', 'con', 'mutacion', 'BRCA),', 'y', 'otros', 'quimioterapicos.'], []).
+template([que, drogas, para, cancer, ovario], ['Los', 'farmacos', 'para', 'cancer', 'de', 'ovario', 'incluyen:', nl,
+                                               '- Quimioterapia: Carboplatino+Paclitaxel', nl,
+                                               '- Terapia dirigida: Bevacizumab', nl,
+                                               '- PARP inhibidores: Olaparib, Niraparib'], []).
+template([tratamiento, cancer, ovario], ['El', 'tratamiento', 'para', 'cancer', 'de', 'ovario', 'puede', 'incluir:', nl,
+                                         '1. Cirugia (histerectomia)', nl,
+                                         '2. Quimioterapia', nl,
+                                         '3. Terapia dirigida', nl,
+                                         '4. Radioterapia', 'en', 'algunos', 'casos'], []).
+template([como, se, trata, el, cancer, de, ovario], ['El', 'tratamiento', 'del', 'cancer', 'de', 'ovario', 'depende', 'del', 'estadio:', nl,
+                                                      '- Estadios tempranos: cirugia + quimioterapia', nl,
+                                                      '- Avanzados: quimioterapia neoadyuvante', nl,
+                                                      '- Recurrente: terapias dirigidas', nl,
+                                                      'El', 'oncologo', 'determinara', 'el', 'mejor', 'enfoque.'], []).
+
+
+
 % Plantilla por defecto
 template(_, ['Que', 'quieres', 'hacer.', 'Podrias', 'decir', '"quiero', 'un', 'diagnostico"', 'o', '"consulta', 'familiar"'], []).
 
@@ -105,6 +144,9 @@ replace0([I|Index], Input, N, Resp, R):-
 % -------------------------------
 % INICIO DEL DIAGNOSTICO MEDICO
 % -------------------------------
+% -------------------------------
+% INICIO DEL DIAGNOSTICO MEDICO (parte modificada)
+% -------------------------------
 iniciar_diagnostico :-
     nl, write('=== DIAGNOSTICO MEDICO ==='), nl,
     write('Enfocado en cancer de ovario y hepatitis'), nl, nl,
@@ -112,7 +154,7 @@ iniciar_diagnostico :-
     write('Ingrese su nombre: '), read(Nombre),
     pedir_genero(Genero),
     obtener_region_actualizada(Region),
-    obtener_sintomas_actualizados(Sintomas),
+    obtener_sintomas_interactivos(Sintomas),  % Cambiado a la nueva funcion
     
     nl, write('Analizando sintomas para '), write(Nombre), write('...'), nl, nl,
     
@@ -134,9 +176,43 @@ iniciar_diagnostico :-
         explicar_fallo_diagnostico(Genero, Sintomas, Region)
     ),
     
-    nl, write('¿Quieres hacer otra consulta médica? (si/no): '), read(Respuesta),
+    nl, write('¿Quieres hacer otra consulta medica? (si/no): '), read(Respuesta),
     (Respuesta == si -> iniciar_diagnostico ; eliza).
 
+% Nueva funcion para obtener sintomas de forma interactiva
+obtener_sintomas_interactivos(Sintomas) :-
+    writeln('Sintomas reconocidos:'),
+    writeln('Generales: fiebre, cansancio, nauseas, vomito, perdida_peso, perdida_apetito, malestar_general'),
+    writeln('Cancer ovario: dolor_pelvico, distension_abdominal, sangrado_irregular, dolor_abdominal,'),
+    writeln('miccion_frecuente, estrenimiento, saciedad_rapida, dolor_lumbar, cambios_mestruales, sangrado_postmenopausia'),
+    writeln('Hepatitis: ictericia, picazon, orina_oscura, heces_claras, dolor_articulaciones, dolor_muscular, confusion_mental'),
+    nl,
+    writeln('Por favor ingresa tus sintomas uno por uno (escribe "fin" cuando hayas terminado):'),
+    obtener_sintomas_aux([], Sintomas).
+
+obtener_sintomas_aux(SintomasAcumulados, Sintomas) :-
+    write('> '),
+    readln(InputList),  % Lee la entrada como lista de palabras
+    (InputList == [fin] ->
+        Sintomas = SintomasAcumulados,
+        validar_sintomas(Sintomas)
+    ;
+        (InputList = [SintomaStr],  % Si es una sola palabra
+         atom_string(SintomaAtom, SintomaStr),
+         sintoma(SintomaAtom) ->
+            (member(SintomaAtom, SintomasAcumulados) ->
+                writeln('Sintoma ya ingresado. Por favor ingresa otro.'),
+                obtener_sintomas_aux(SintomasAcumulados, Sintomas)
+            ;
+                obtener_sintomas_aux([SintomaAtom|SintomasAcumulados], Sintomas)
+            )
+        ;
+            writeln('Entrada no reconocida como sintoma. Por favor ingresa solo un sintoma a la vez.'),
+            writeln('Ejemplos validos: "fiebre", "dolor_abdominal", "ictericia"'),
+            writeln('Escribe "fin" cuando hayas terminado de ingresar sintomas.'),
+            obtener_sintomas_aux(SintomasAcumulados, Sintomas)
+        )
+    ).
 pedir_genero(Genero) :-
     write('Ingrese su genero (hombre/mujer): '),
     read(Genero),
@@ -194,7 +270,7 @@ procesar_consulta_familiar(Input) :-
         (nieto(X, Y) -> writeln(['Si,', X, 'es nieto de', Y]) ; writeln(['No,', X, 'no es nieto de', Y]))
     ; Input = [X, es, nieta, de, Y] -> 
         (nieta(X, Y) -> writeln(['Si,', X, 'es nieta de', Y]) ; writeln(['No,', X, 'no es nieta de', Y]))
-    ; Input = [_, es, relacion, de, _] ->  % Corregido: variables anónimas
+    ; Input = [_, es, relacion, de, _] ->  % Corregido: variables anonimas
         writeln('Por favor especifica la relacion (ej. "padre de", "madre de", etc.)')
     ; writeln('Formato no reconocido. Usa "X es relacion de Y" (ej. "juan es padre de pedro")')),
     nl, write('¿Quieres hacer otra consulta familiar? (si/no): '), 
@@ -426,18 +502,46 @@ listar_diagnosticos_unicos([D|Ds]) :-
     listar_diagnosticos_unicos(Ds).
 
 explicar_cancer_ovario :-
-    write('RECOMENDACIONES:'), nl,
-    write('1. Consultar a un ginecologo oncologo'), nl,
-    write('2. Realizar ultrasonido pelvico y marcadores CA-125'), nl,
-    write('Zonas de alto riesgo: Guerrero, Veracruz, Sinaloa'), nl,
-    write('Factores de riesgo: antecedentes familiares, mutaciones BRCA'), nl, nl.
+    write('RECOMENDACIONES Y TRATAMIENTOS PARA CANCER DE OVARIO:'), nl, nl,
+    write('MEDICAMENTOS PRINCIPALES:'), nl,
+    write('- Quimioterapicos: Carboplatino, Paclitaxel, Cisplatino'), nl,
+    write('- Terapias dirigidas: Bevacizumab, Olaparib, Niraparib'), nl,
+    write('- Hormonoterapia en algunos casos: Tamoxifeno, Inhibidores de aromatasa'), nl, nl,
+    
+    write('PROTOCOLOS COMUNES:'), nl,
+    write('1. Cirugia + quimioterapia adyuvante (6 ciclos)'), nl,
+    write('2. Quimioterapia neoadyuvante antes de cirugia en casos avanzados'), nl,
+    write('3. Terapia de mantenimiento con inhibidores PARP'), nl, nl,
+    
+    write('EXAMENES DIAGNOSTICOS:'), nl,
+    write('- Marcador tumoral CA-125'), nl,
+    write('- Ultrasonido transvaginal'), nl,
+    write('- Tomografia abdominal/pelvica'), nl, nl,
+    
+    write('ZONAS DE ALTO RIESGO: Guerrero, Veracruz, Sinaloa'), nl,
+    write('FACTORES DE RIESGO: antecedentes familiares, mutaciones BRCA, endometriosis'), nl, nl.
 
 explicar_hepatitis :-
-    write('RECOMENDACIONES:'), nl,
-    write('1. Acudir a un hepatologo'), nl,
-    write('2. Realizar pruebas de funcion hepatica'), nl,
-    write('Zonas endemicas: Tabasco, Amazonas'), nl,
-    write('Modos de contagio: agua contaminada, contacto sanguineo'), nl, nl.
+    write('RECOMENDACIONES Y TRATAMIENTOS PARA HEPATITIS:'), nl, nl,
+    write('MEDICAMENTOS SEGUN TIPO:'), nl,
+    write('- Hepatitis B: Tenofovir, Entecavir, Interferon pegilado'), nl,
+    write('- Hepatitis C: Sofosbuvir/velpatasvir, Glecaprevir/pibrentasvir'), nl,
+    write('- Hepatitis autoinmune: Corticosteroides, Azatioprina'), nl,
+    write('- Sintomaticos: Silimarina, Ursodesoxicolico para picazon'), nl, nl,
+    
+    write('MANEJO GENERAL:'), nl,
+    write('1. Reposo durante fase aguda'), nl,
+    write('2. Dieta balanceada con reduccion de grasas'), nl,
+    write('3. Abstinencia absoluta de alcohol'), nl,
+    write('4. Vacunacion para hepatitis A/B si no esta inmunizado'), nl, nl,
+    
+    write('PRUEBAS DIAGNOSTICAS:'), nl,
+    write('- Pruebas de funcion hepatica (ALT, AST, bilirrubina)'), nl,
+    write('- Serologias virales'), nl,
+    write('- Elastografia hepatica o biopsia para fibrosis'), nl, nl,
+    
+    write('ZONAS ENDEMICAS: Tabasco, Amazonas, areas con saneamiento deficiente'), nl,
+    write('PREVENCION: agua potable, higiene alimentaria, sexo seguro, no compartir agujas'), nl, nl.
 
 explicar_fallo_diagnostico(hombre, Sintomas, _) :-
     (member(dolor_pelvico, Sintomas); member(distension_abdominal, Sintomas)) ->
