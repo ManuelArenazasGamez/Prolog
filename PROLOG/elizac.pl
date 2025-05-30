@@ -13,6 +13,7 @@ procesar_consulta(Input) :-
     writeln('Adios. Espero haberte ayudado. Espero verte pronto.'), !.
 
 
+
 procesar_consulta(Input) :-
     (Input == ['quiero', 'un', 'diagnostico'] ; 
      Input == ['necesito', 'un', 'diagnostico'] ;
@@ -26,7 +27,6 @@ procesar_consulta(Input) :-
      Input == ['me', 'siento', 'mal']),
     writeln('Entiendo que no te sientes bien. Vamos a hacer un diagnostico.'),
     iniciar_diagnostico, !.
-
 
 procesar_consulta(Input) :-
     (Input == ['quiero', 'consultar', 'familia'] ; 
@@ -52,6 +52,8 @@ template([hola], ['Hola', '¿','en', 'que', 'puedo', 'ayudarte', '?'], []).
 template([hola, _], ['Hola', '¿como', 'estas', '?', '¿','en', 'que', 'puedo', 'ayudarte', '?'], []).
 template([como, estas], ['Estoy', 'bien,', 'gracias', 'por', 'preguntar.', '¿Y', 'tu', '?'], []).
 template([que, puedes, hacer], ['Puedo', 'ayudarte', 'con:', 'diagnosticos', 'medicos', '(cancer', 'de', 'ovario', 'y', 'hepatitis)', 'y', 'consultas', 'sobre', 'relaciones', 'familiares.'], []).
+
+
 
 
 % Hepatitis - Variantes de pregunta
@@ -227,7 +229,6 @@ validar_sintomas([]).
 validar_sintomas([H|T]) :- sintoma(H), validar_sintomas(T).
 
 
-
 procesar_consulta_familiar(Input) :-
     (Input = [X, es, padre, de, Y] -> 
         (padre(X, Y) -> writeln(['Si,', X, 'es padre de', Y]) ; writeln(['No,', X, 'no es padre de', Y]))
@@ -276,7 +277,6 @@ procesar_respuesta_familiar(Respuesta) :-
 
 
 
-
 hombre(jose).
 hombre(manuel).
 hombre(gerardo).
@@ -318,7 +318,6 @@ tio(X, Y) :- hermano(X, Z), (padre(Z, Y); madre(Z, Y)).
 tia(X, Y) :- hermana(X, Z), (padre(Z, Y); madre(Z, Y)).
 primo(X, Y) :- (padre(Z, X); madre(Z, X)), (hermano(Z, W); hermana(Z, W)), (padre(W, Y); madre(W, Y)), hombre(X), X \= Y.
 prima(X, Y) :- (padre(Z, X); madre(Z, X)), (hermano(Z, W); hermana(Z, W)), (padre(W, Y); madre(W, Y)), mujer(X), X \= Y.
-
 
 
 region(mexico).
@@ -416,7 +415,6 @@ presente_en(hepatitis, oaxaca).
 presente_en(hepatitis, amazonas).
 presente_en(hepatitis, salta).
 presente_en(hepatitis, baja_california).
-
 
 
 sintoma_clave(cancer_de_ovario, dolor_pelvico).
