@@ -53,6 +53,63 @@ template([hola, _], ['Hola', '¿como', 'estas', '?', '¿','en', 'que', 'puedo', 
 template([como, estas], ['Estoy', 'bien,', 'gracias', 'por', 'preguntar.', '¿Y', 'tu', '?'], []).
 template([que, puedes, hacer], ['Puedo', 'ayudarte', 'con:', 'diagnosticos', 'medicos', '(cancer', 'de', 'ovario', 'y', 'hepatitis)', 'y', 'consultas', 'sobre', 'relaciones', 'familiares.'], []).
 
+% Plantilla futbolistas
+template([quien, es, 'Messi'], ['Lionel', 'Messi', 'es', 'un', 'delantero', 'argentino', 'que', 'ha', 'ganado', 'la', 'Champions', 'League', 'y', 'el', 'Mundial.'], []).
+template([quien, es, 'Batistuta'], ['Gabriel', 'Batistuta', 'es', 'un', 'delantero', 'argentino', 'que', 'no', 'ha', 'ganado', 'la', 'Champions', 'League', 'ni', 'el', 'Mundial.'], []).
+template([quien, es, 'Maradona'], ['Diego', 'Maradona', 'es', 'un', 'mediocampista', 'argentino', 'que', 'ha', 'ganado', 'la', 'Champions', 'League', 'y', 'el', 'Mundial.'], []).
+template([quien, es, 'Riquelme'], ['Juan', 'Roman', 'Riquelme', 'es', 'un', 'mediocampista', 'argentino', 'que', 'no', 'ha', 'ganado', 'la', 'Champions', 'League', 'ni', 'el', 'Mundial.'], []).
+
+template([quien, es, 'Mbappe'], ['Kylian', 'Mbappe', 'es', 'un', 'delantero', 'frances', 'que', 'ha', 'ganado', 'la', 'Champions', 'League', 'y', 'el', 'Mundial.'], []).
+template([quien, es, 'Henry'], ['Thierry', 'Henry', 'es', 'un', 'delantero', 'frances', 'que', 'ha', 'ganado', 'la', 'Champions', 'League', 'y', 'el', 'Mundial.'], []).
+template([quien, es, 'Zidane'], ['Zinedine', 'Zidane', 'es', 'un', 'mediocampista', 'frances', 'que', 'ha', 'ganado', 'la', 'Champions', 'League', 'y', 'el', 'Mundial.'], []).
+template([quien, es, 'Pogba'], ['Paul', 'Pogba', 'es', 'un', 'mediocampista', 'frances', 'que', 'ha', 'ganado', 'la', 'Champions', 'League', 'y', 'el', 'Mundial.'], []).
+
+template([quien, es, 'Cristiano'], ['Cristiano', 'Ronaldo', 'es', 'un', 'delantero', 'portugues', 'que', 'ha', 'ganado', 'la', 'Champions', 'League', 'pero', 'no', 'el', 'Mundial.'], []).
+template([quien, es, 'Eusebio'], ['Eusebio', 'es', 'un', 'delantero', 'portugues', 'que', 'no', 'ha', 'ganado', 'la', 'Champions', 'League', 'ni', 'el', 'Mundial.'], []).
+template([quien, es, 'Figo'], ['Luis', 'Figo', 'es', 'un', 'mediocampista', 'portugues', 'que', 'ha', 'ganado', 'la', 'Champions', 'League', 'pero', 'no', 'el', 'Mundial.'], []).
+template([quien, es, 'Bruno', 'Fernandes'], ['Bruno', 'Fernandes', 'es', 'un', 'mediocampista', 'portugues', 'que', 'no', 'ha', 'ganado', 'la', 'Champions', 'League', 'ni', 'el', 'Mundial.'], []).
+
+% Plantilla de jugadores por paises
+template([quienes, son, los, delanteros, de, argentina], ['Los', 'delanteros', 'argentinos', 'son:', 'Messi', 'y', 'Batistuta.'], []).
+template([quienes, son, los, mediocampistas, de, argentina], ['Los', 'mediocampistas', 'argentinos', 'son:', 'Maradona', 'y', 'Riquelme.'], []).
+template([delanteros, de, argentina], ['Los', 'delanteros', 'argentinos', 'son:', 'Messi', 'y', 'Batistuta.'], []).
+template([mediocampistas, de, argentina], ['Los', 'mediocampistas', 'argentinos', 'son:', 'Maradona', 'y', 'Riquelme.'], []).
+
+
+template([quienes, son, los, delanteros, de, brasil], ['Los', 'delanteros', 'brasileños', 'son:', 'Ronaldo', 'y', 'Neymar.'], []).
+template([quienes, son, los, mediocampistas, de, brasil], ['Los', 'mediocampistas', 'brasileños', 'son:', 'Kaka', 'y', 'Ronaldinho.'], []).
+template([delanteros, de, brasil], ['Los', 'delanteros', 'brasileños', 'son:', 'Ronaldo', 'y', 'Neymar.'], []).
+template([mediocampistas, de, brasil], ['Los', 'mediocampistas', 'brasileños', 'son:', 'Kaka', 'y', 'Ronaldinho.'], []).
+
+
+template([quienes, son, los, delanteros, de, francia], ['Los', 'delanteros', 'franceses', 'son:', 'Mbappe', 'y', 'Henry.'], []).
+template([quienes, son, los, mediocampistas, de, francia], ['Los', 'mediocampistas', 'franceses', 'son:', 'Zidane', 'y', 'Pogba.'], []).
+template([delanteros, de, francia], ['Los', 'delanteros', 'franceses', 'son:', 'Mbappe', 'y', 'Henry.'], []).
+template([mediocampistas, de, francia], ['Los', 'mediocampistas', 'franceses', 'son:', 'Zidane', 'y', 'Pogba.'], []).
+
+
+
+template([quienes, son, los, delanteros, de, portugal], ['Los', 'delanteros', 'portugueses', 'son:', 'Cristiano', 'Ronaldo', 'y', 'Eusebio.'], []).
+template([quienes, son, los, mediocampistas, de, portugal], ['Los', 'mediocampistas', 'portugueses', 'son:', 'Figo', 'y', 'Bruno', 'Fernandes.'], []).
+template([delanteros, de, portugal], ['Los', 'delanteros', 'portugueses', 'son:', 'Cristiano', 'Ronaldo', 'y', 'Eusebio.'], []).
+template([mediocampistas, de, portugal], ['Los', 'mediocampistas', 'portugueses', 'son:', 'Figo', 'y', 'Bruno', 'Fernandes.'], []).
+
+
+
+% Plantilla de futbolistas que han ganado la Champions y el Mundial
+template([quienes, han, ganado, la, champions], ['Los', 'futbolistas', 'que', 'han', 'ganado', 'la', 'Champions', 'son:', 'Messi,', 'Maradona,', 'Ronaldo,', 'Neymar,', 'Kaka,', 'Ronaldinho,', 'Mbappe,', 'Henry,', 'Zidane,', 'Pogba,', 'Cristiano', 'Ronaldo', 'y', 'Figo.'], []).
+template([ganadores, de, champions], ['Los', 'futbolistas', 'que', 'han', 'ganado', 'la', 'Champions', 'son:', 'Messi,', 'Maradona,', 'Ronaldo,', 'Neymar,', 'Kaka,', 'Ronaldinho,', 'Mbappe,', 'Henry,', 'Zidane,', 'Pogba,', 'Cristiano', 'Ronaldo', 'y', 'Figo.'], []).
+
+template([quienes, han, ganado, el, mundial], ['Los', 'futbolistas', 'que', 'han', 'ganado', 'el', 'Mundial', 'son:', 'Messi,', 'Maradona,', 'Ronaldo,', 'Kaka,', 'Ronaldinho,', 'Mbappe,', 'Henry,', 'Zidane', 'y', 'Pogba.'], []).
+template([ganadores, de, mundial], ['Los', 'futbolistas', 'que', 'han', 'ganado', 'el', 'Mundial', 'son:', 'Messi,', 'Maradona,', 'Ronaldo,', 'Kaka,', 'Ronaldinho,', 'Mbappe,', 'Henry,', 'Zidane', 'y', 'Pogba.'], []).
+
+template([quienes, han, ganado, ambos], ['Los', 'futbolistas', 'que', 'han', 'ganado', 'tanto', 'la', 'Champions', 'como', 'el', 'Mundial', 'son:', 'Messi,', 'Maradona,', 'Ronaldo,', 'Kaka,', 'Ronaldinho,', 'Mbappe,', 'Henry,', 'Zidane', 'y', 'Pogba.'], []).
+template([ganadores, de, ambos], ['Los', 'futbolistas', 'que', 'han', 'ganado', 'tanto', 'la', 'Champions', 'como', 'el', 'Mundial', 'son:', 'Messi,', 'Maradona,', 'Ronaldo,', 'Kaka,', 'Ronaldinho,', 'Mbappe,', 'Henry,', 'Zidane', 'y', 'Pogba.'], []).
+
+
+template([que, conoces, sobre, futbol], ['Conozco', 'futbolistas', 'de', 'Argentina,', 'Brasil,', 'Francia', 'y', 'Portugal.', 'Puedo', 'darte', 'informacion', 'sobre', 'sus', 'logros', 'en', 'la', 'Champions', 'League', 'y', 'el', 'Mundial.'], []).
+template([conocimiento, sobre, futbol], ['Conozco', 'futbolistas', 'de', 'Argentina,', 'Brasil,', 'Francia', 'y', 'Portugal.', 'Puedo', 'darte', 'informacion', 'sobre', 'sus', 'logros', 'en', 'la', 'Champions', 'League', 'y', 'el', 'Mundial.'], []).
+template([que, sabes, de, futbol], ['Conozco', 'futbolistas', 'de', 'Argentina,', 'Brasil,', 'Francia', 'y', 'Portugal.', 'Puedo', 'darte', 'informacion', 'sobre', 'sus', 'logros', 'en', 'la', 'Champions', 'League', 'y', 'el', 'Mundial.'], []).
 
 
 
@@ -73,7 +130,7 @@ template([como, tratar, hepatitis], ['El', 'tratamiento', 'de', 'hepatitis', 'in
 
 % Cancer de ovario - Variantes de pregunta
 template([medicamentos, cancer, ovario], ['Para', 'cancer', 'de', 'ovario', 'se', 'usan:', 'Paclitaxel,', 'Carboplatino,', 'Bevacizumab,', 'Olaparib', '(para', 'casos', 'con', 'mutacion', 'BRCA),', 'y', 'otros', 'quimioterapicos.'], []).
-template([que, drogas, para, cancer, ovario], ['Los', 'farmacos', 'para', 'cancer', 'de', 'ovario', 'incluyen:', nl,
+template([que, medicamentos, para, cancer, ovario], ['Los', 'farmacos', 'para', 'cancer', 'de', 'ovario', 'incluyen:', nl,
                                                '- Quimioterapia: Carboplatino+Paclitaxel', nl,
                                                '- Terapia dirigida: Bevacizumab', nl,
                                                '- PARP inhibidores: Olaparib, Niraparib'], []).
@@ -273,7 +330,7 @@ procesar_respuesta_familiar(Respuesta) :-
         eliza.
 
 
-
+% Base de datos jugadores
 
 
 
